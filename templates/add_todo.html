@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="display-5 fw-bold title text-center">My <span class="todo">TODO</span>'s</h1>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    
+    {% for category, message in messages %}
+      <p class="text-center text-{{category}}">{{ message }}</p>
+    {% endfor %}
+    
+  {% endif %}
+{% endwith %}
+<form action="" class="d-flex flex-column" method="POST">
+    <div class="mb-3">
+        <label for="title">Title</label>
+        {% if todo %}
+        <input type="text" class="form-control form-control-sm" id="title" name="title" value="{{todo.title}}" required>
+        {% else %}
+        <input type="text" class="form-control form-control-sm" id="title" name="title" required>
+      {% endif %}
+    </div>
+    <div class="mb-3">
+        <label for="due_date">Due Date</label>
+        {% if todo %}
+        <input type="date" class="form-control form-control-sm" id="due_date" name="due_date" value="{{todo.duedate.date()}}" required>
+
+        {% else %}
+        <input type="date" class="form-control form-control-sm" id="due_date" name="due_date" value="" required>
+        {% endif %}
+    </div>
+    <div class="mb-3">
+      {% if todo %}
+          {% if todo.alert == True %}
+        <input class="form-check-input" type="checkbox" value="True" id="alert_me" name="alert" checked>
+        {% else %}
+        <input class="form-check-input" type="checkbox" value="True" id="alert_me" name="alert">
+
+        {% endif %}
+        {% else %}
+        <input class="form-check-input" type="checkbox" value="True" id="alert_me" name="alert">
+
+        {% endif %}
+
+        <label class="form-check-label" for="alert_me">
+         Alert me
+        </label>
+    </div>
+    <input type="submit" class="btn btn-info text-center" value="Add TODO">
+    
+</form>
+{% endblock %}

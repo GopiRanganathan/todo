@@ -1,0 +1,33 @@
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+
+section{
+    min-height:80vh;
+}
+.content{
+    max-width:800px;
+    min-width:350px;
+}
+.todo{
+    color:rgba(0,75,132,255);
+}
+.title{
+    color:rgba(26,46,53,255)
+}
+
+svg{
+    fill:white;
+}
+
+svg.red{
+    fill:rgb(181, 30, 30);
+}
+svg.blue{
+    fill:rgba(0,75,132,255);
+}
+svg.orange{
+    fill:orange;
+}
