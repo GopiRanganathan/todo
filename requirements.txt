@@ -6,9 +6,6 @@ Werkzeug==3.0.1
 SQLAlchemy==2.0.23
 gunicorn==21.2.0
 psycopg2-binary==2.9.9
-email-validator==2.1.0.post1
-Flask-Mail2==1.0.2
-py-vapid==1.9.0
 cryptography==41.0.7
 pywebpush==1.14.0
 apscheduler==3.10.4
