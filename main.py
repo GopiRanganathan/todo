@@ -168,7 +168,6 @@ def add_todo():
         )
         db.session.add(new_todo)
         db.session.commit()
-        send_notification(new_todo.user_id, new_todo)
         return redirect(url_for('home'))
     return render_template('add_todo.html')
 
