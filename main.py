@@ -86,7 +86,7 @@ def check_due_date():
     with app.app_context():
         # print('scheduler start')
         tomorrow = datetime.now().date() + timedelta(days=1)
-        due_dates = Todo.query.filter(Todo.duedate == tomorrow, Todo.alert == True).all()
+        due_dates = Todo.query.filter(Todo.duedate == tomorrow, Todo.alert == True, Todo.completed == False).all()
         # print(due_dates)
         for todo in due_dates:
             send_notification(id=todo.user_id, todo=todo)
@@ -197,7 +197,7 @@ def edit_todo(id):
     todo = db.session.execute(db.select(Todo).where(Todo.id==id)).scalar()
     if request.method == 'POST':
         todo.title = request.form.get('title')
-        todo.due_date = datetime.strptime(request.form.get('due_date'), '%Y-%m-%d').date()
+        todo.duedate = datetime.strptime(request.form.get('due_date'), '%Y-%m-%d').date()
         todo.alert = False if request.form.get('alert') == None else True
         db.session.commit()
         return redirect(url_for('home'))
