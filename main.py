@@ -94,7 +94,7 @@ def check_due_date():
 
 # SCHEDULER
 scheduler = BackgroundScheduler(daemon=True)
-scheduler.add_job(check_due_date, 'cron', day_of_week='*', hour=19, minute=3) 
+scheduler.add_job(check_due_date, 'cron', day_of_week='*', hour=22, minute=0) 
 scheduler.start()
 
 
